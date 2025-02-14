@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:foods_app/screens/home_screen.dart';
 import 'package:foods_app/utils/UiColors.dart';
 
-import '../utils/Assets.dart';
-import '../utils/Strings.dart';
+import '../../../utils/Assets.dart';
+import '../../../utils/Strings.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -23,11 +23,7 @@ class _SplashScreenState extends State<SplashScreen>
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
     Future.delayed(const Duration(seconds: 4), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
-        ),
-      );
+      Modular.to.navigate('/welcome_screen');
     });
   }
 
@@ -53,14 +49,16 @@ class _SplashScreenState extends State<SplashScreen>
           const Positioned(
             top: 450,
             left: 135,
-            child: Text(
-              Strings.splashScreenSubtitle,
+            child: DefaultTextStyle(
               maxLines: 1,
               style: TextStyle(
                   fontSize: 14.0,
                   color: Colors.white,
                   fontFamily: 'Gilroy',
                   letterSpacing: 5.5),
+              child: Text(
+                Strings.splashScreenSubtitle,
+              ),
             ),
           )
         ],
