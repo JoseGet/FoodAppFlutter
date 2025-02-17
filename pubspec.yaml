@@ -75,9 +75,12 @@ flutter:
   # https://flutter.dev/to/asset-from-package
 
   fonts:
-    - family: Gilroy
+    - family: GilroyMedium
       fonts:
         - asset: fonts/gilroy-medium.ttf
+    - family: Gilroy
+      fonts:
+        - asset: fonts/gilroy-regular.ttf
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

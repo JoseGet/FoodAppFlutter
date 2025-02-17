@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:foods_app/modules/login/components/splash_screen.dart';
-import 'package:foods_app/modules/login/components/welcome_screen.dart';
+import 'package:foods_app/modules/login/components/screens/logIn_screen.dart';
+import 'package:foods_app/modules/login/components/screens/splash_screen.dart';
+import 'package:foods_app/modules/login/components/screens/welcome_screen.dart';
 
 class LoginModule extends Module {
   @override
@@ -10,5 +11,6 @@ class LoginModule extends Module {
   void routes(RouteManager r) {
     r.child('/', child: (context) => const SplashScreen());
     r.child('/welcome_screen', child: (context) => const WelcomeScreen());
+    r.child('/loginIn_screen', child: (context) => const LoginScreen());
   }
 }
