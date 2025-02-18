@@ -9,4 +9,5 @@ abstract class Strings {
   static const email = "Email";
   static const passWord = "Password";
   static const forgotPassword = "Forgot Password?";
+  static const logIn = "Log In";
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:foods_app/modules/login/components/widgets/default_large_button.dart';
 import 'package:foods_app/utils/Assets.dart';
 import 'package:foods_app/utils/Strings.dart';
-import 'package:foods_app/utils/UiColors.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -55,27 +55,15 @@ class WelcomeScreen extends StatelessWidget {
                 height: 41.0,
               ),
               Container(
-                height: 67.0,
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 30.5),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: UiColors.defaultGreen,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20.0),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    Modular.to.navigate('/loginIn_screen');
-                  },
-                  child: const Text(
-                    Strings.getStarted,
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
-                  ),
-                ),
-              )
+                  height: 67.0,
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 30.5),
+                  child: DefaultLargeButton(
+                    name: Strings.getStarted,
+                    function: () {
+                      Modular.to.navigate('/loginin_screen');
+                    },
+                  ))
             ],
           ),
         ),

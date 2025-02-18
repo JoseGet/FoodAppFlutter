@@ -1,8 +1,16 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:foods_app/modules/login/components/stores/logIn_store.dart';
+import 'package:foods_app/modules/login/components/widgets/default_large_button.dart';
 import 'package:foods_app/utils/Assets.dart';
 import 'package:foods_app/utils/Strings.dart';
 import 'package:foods_app/utils/Styles.dart';
+import 'package:foods_app/utils/UiColors.dart';
+
+final loginStore = LogInStore();
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Expanded(
         child: Container(
           color: Colors.white,
@@ -36,16 +45,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      DefaultTextStyle(
+                      Text(
+                        Strings.loging,
                         style: Styles.titleStyle,
-                        child: const Text(Strings.loging),
                       ),
                       const SizedBox(
                         height: 15.0,
                       ),
-                      DefaultTextStyle(
+                      Text(
+                        Strings.enterEmailPassword,
                         style: Styles.subtitleStyle,
-                        child: const Text(Strings.enterEmailPassword),
                       ),
                       const SizedBox(
                         height: 40.0,
@@ -53,17 +62,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          DefaultTextStyle(
+                          Text(
+                            Strings.email,
                             style: Styles.subtitleStyle.copyWith(
                               fontFamily: "Gilroy",
                               fontWeight: FontWeight.w700,
                             ),
-                            child: const Text(Strings.email),
                           ),
                           const SizedBox(
                             height: 10.0,
                           ),
-                          const TextField()
+                          TextField(
+                            onChanged: (value) {
+                              loginStore.email = value;
+                            },
+                          )
                         ],
                       ),
                       const SizedBox(
@@ -72,28 +85,33 @@ class _LoginScreenState extends State<LoginScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          DefaultTextStyle(
+                          Text(
+                            Strings.passWord,
                             style: Styles.subtitleStyle.copyWith(
                               fontFamily: "Gilroy",
                               fontWeight: FontWeight.w700,
                             ),
-                            child: const Text(Strings.passWord),
                           ),
                           const SizedBox(
                             height: 10.0,
                           ),
-                          TextField(
-                            obscureText: isVisible,
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                icon: Icon(isVisible
-                                    ? Icons.visibility_off
-                                    : Icons.visibility),
-                                onPressed: () {
-                                  setState(() {
-                                    isVisible = !isVisible;
-                                  });
-                                },
+                          Observer(
+                            builder: (_) => TextField(
+                              onChanged: (value) {
+                                loginStore.passWord = value;
+                              },
+                              obscureText: loginStore.isVisible,
+                              decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  icon: Icon(isVisible
+                                      ? Icons.visibility_off
+                                      : Icons.visibility),
+                                  style: const ButtonStyle(
+                                      splashFactory: NoSplash.splashFactory),
+                                  onPressed: () {
+                                    loginStore.updateFielVisibility();
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -105,10 +123,59 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: [
                               GestureDetector(
                                 onTap: () {},
-                                child: const Text(Strings.forgotPassword),
+                                child: const Text(
+                                  Strings.forgotPassword,
+                                  style: TextStyle(
+                                    color: UiColors.defaultTitle,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
+                          SizedBox(
+                            height: 67.0,
+                            width: double.infinity,
+                            child: DefaultLargeButton(
+                              name: Strings.logIn,
+                              function: () {},
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 25.0,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                  children: [
+                                    const TextSpan(
+                                      text: "Don't have an account? ",
+                                      style: TextStyle(
+                                        color: UiColors.defaultTitle,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: 'Singup',
+                                      style: const TextStyle(
+                                        color: UiColors.defaultGreen,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          //navigate to Signup Screen
+                                          Modular.to.navigate('/singup_screen');
+                                        },
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       )
                     ],
