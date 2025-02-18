@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.17
   flutter_modular: ^6.3.4
+  mobx: ^2.5.0
 
 dev_dependencies:
   flutter_test:
