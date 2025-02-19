@@ -20,171 +20,161 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool isVisible = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Expanded(
-        child: Container(
-          color: Colors.white,
-          padding: const EdgeInsets.only(top: 77.0),
-          child: Column(
-            children: [
-              SvgPicture.asset(
-                Assets.coloredCarrot,
-              ),
-              const SizedBox(
-                height: 100.0,
-              ),
-              Expanded(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  width: double.infinity,
-                  child: Column(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 77.0),
+            child: SvgPicture.asset(
+              Assets.coloredCarrot,
+            ),
+          ),
+          const SizedBox(
+            height: 100.0,
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    Strings.loging,
+                    style: Styles.titleStyle,
+                  ),
+                  const SizedBox(
+                    height: 15.0,
+                  ),
+                  Text(
+                    Strings.enterEmailPassword,
+                    style: Styles.subtitleStyle,
+                  ),
+                  const SizedBox(
+                    height: 40.0,
+                  ),
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        Strings.loging,
-                        style: Styles.titleStyle,
+                        Strings.email,
+                        style: Styles.subtitleStyle.copyWith(
+                          fontFamily: "Gilroy",
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                      const SizedBox(
-                        height: 15.0,
-                      ),
+                      TextField(
+                        onChanged: (value) {
+                          loginStore.email = value;
+                        },
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(
-                        Strings.enterEmailPassword,
-                        style: Styles.subtitleStyle,
+                        Strings.passWord,
+                        style: Styles.subtitleStyle.copyWith(
+                          fontFamily: "Gilroy",
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                      const SizedBox(
-                        height: 40.0,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            Strings.email,
-                            style: Styles.subtitleStyle.copyWith(
-                              fontFamily: "Gilroy",
-                              fontWeight: FontWeight.w700,
+                      Observer(
+                        builder: (_) => TextField(
+                          onChanged: (value) {
+                            loginStore.passWord = value;
+                          },
+                          obscureText: loginStore.isVisible,
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                              icon: Icon(loginStore.isVisible
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                              style: const ButtonStyle(
+                                  splashFactory: NoSplash.splashFactory),
+                              onPressed: () {
+                                loginStore.updateFielVisibility();
+                              },
                             ),
                           ),
-                          const SizedBox(
-                            height: 10.0,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: const Text(
+                              Strings.forgotPassword,
+                              style: TextStyle(
+                                color: UiColors.defaultTitle,
+                              ),
+                            ),
                           ),
-                          TextField(
-                            onChanged: (value) {
-                              loginStore.email = value;
-                            },
-                          )
                         ],
                       ),
                       const SizedBox(
                         height: 30.0,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      SizedBox(
+                        height: 67.0,
+                        width: double.infinity,
+                        child: DefaultLargeButton(
+                          name: Strings.logIn,
+                          function: () {},
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            Strings.passWord,
-                            style: Styles.subtitleStyle.copyWith(
-                              fontFamily: "Gilroy",
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
-                          Observer(
-                            builder: (_) => TextField(
-                              onChanged: (value) {
-                                loginStore.passWord = value;
-                              },
-                              obscureText: loginStore.isVisible,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  icon: Icon(isVisible
-                                      ? Icons.visibility_off
-                                      : Icons.visibility),
-                                  style: const ButtonStyle(
-                                      splashFactory: NoSplash.splashFactory),
-                                  onPressed: () {
-                                    loginStore.updateFielVisibility();
-                                  },
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              GestureDetector(
-                                onTap: () {},
-                                child: const Text(
-                                  Strings.forgotPassword,
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                const TextSpan(
+                                  text: "Don't have an account? ",
                                   style: TextStyle(
                                     color: UiColors.defaultTitle,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 30.0,
-                          ),
-                          SizedBox(
-                            height: 67.0,
-                            width: double.infinity,
-                            child: DefaultLargeButton(
-                              name: Strings.logIn,
-                              function: () {},
+                                TextSpan(
+                                  text: 'Singup',
+                                  style: const TextStyle(
+                                    color: UiColors.defaultGreen,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      //navigate to Signup Screen
+                                      Modular.to.navigate('/singup_screen');
+                                    },
+                                )
+                              ],
                             ),
                           ),
-                          const SizedBox(
-                            height: 25.0,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              RichText(
-                                text: TextSpan(
-                                  children: [
-                                    const TextSpan(
-                                      text: "Don't have an account? ",
-                                      style: TextStyle(
-                                        color: UiColors.defaultTitle,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'Singup',
-                                      style: const TextStyle(
-                                        color: UiColors.defaultGreen,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          //navigate to Signup Screen
-                                          Modular.to.navigate('/singup_screen');
-                                        },
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          )
                         ],
                       )
                     ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

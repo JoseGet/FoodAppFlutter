@@ -10,4 +10,12 @@ abstract class Strings {
   static const passWord = "Password";
   static const forgotPassword = "Forgot Password?";
   static const logIn = "Log In";
+  static const signUp = "Sign Up";
+  static const enterCredentials = "Enter your credentials to continue";
+  static const userName = "Username";
+  static const agree = 'By continuing you agree to our ';
+  static const termsOfService = 'Terms of Service ';
+  static const and = 'and ';
+  static const privacyPolice = 'Privacy Police.';
+  static const alredyHaveAccount = 'Already have an account? ';
 }
