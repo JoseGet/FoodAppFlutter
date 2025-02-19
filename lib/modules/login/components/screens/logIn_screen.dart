@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:foods_app/modules/login/components/stores/logIn_store.dart';
+import 'package:foods_app/modules/login/components/stores/login_store.dart';
 import 'package:foods_app/modules/login/components/widgets/default_large_button.dart';
 import 'package:foods_app/utils/Assets.dart';
 import 'package:foods_app/utils/Strings.dart';
 import 'package:foods_app/utils/Styles.dart';
 import 'package:foods_app/utils/UiColors.dart';
 
-final loginStore = LogInStore();
+final loginStore = LoginStore();
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
