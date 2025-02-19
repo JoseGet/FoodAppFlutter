@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foods_app/modules/login/components/screens/logIn_screen.dart';
+import 'package:foods_app/modules/login/components/stores/singup_store.dart';
 import 'package:foods_app/modules/login/components/widgets/default_large_button.dart';
 import 'package:foods_app/utils/Assets.dart';
 import 'package:foods_app/utils/Strings.dart';
 import 'package:foods_app/utils/Styles.dart';
 import 'package:foods_app/utils/UiColors.dart';
+
+final signUp = SingupStore();
 
 class SingupScreen extends StatefulWidget {
   const SingupScreen({super.key});
@@ -67,7 +69,7 @@ class _SingupScreenState extends State<SingupScreen> {
                       ),
                       TextField(
                         onChanged: (value) {
-                          loginStore.email = value;
+                          signUp.userName = value;
                         },
                       )
                     ],
@@ -87,7 +89,7 @@ class _SingupScreenState extends State<SingupScreen> {
                       ),
                       TextField(
                         onChanged: (value) {
-                          loginStore.email = value;
+                          signUp.email = value;
                         },
                       )
                     ],
@@ -108,18 +110,18 @@ class _SingupScreenState extends State<SingupScreen> {
                       Observer(
                         builder: (_) => TextField(
                           onChanged: (value) {
-                            loginStore.passWord = value;
+                            signUp.passWord = value;
                           },
-                          obscureText: loginStore.isVisible,
+                          obscureText: signUp.isVisible,
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
-                              icon: Icon(loginStore.isVisible
+                              icon: Icon(signUp.isVisible
                                   ? Icons.visibility_off
                                   : Icons.visibility),
                               style: const ButtonStyle(
                                   splashFactory: NoSplash.splashFactory),
                               onPressed: () {
-                                loginStore.updateFielVisibility();
+                                signUp.updateFielVisibility();
                               },
                             ),
                           ),
