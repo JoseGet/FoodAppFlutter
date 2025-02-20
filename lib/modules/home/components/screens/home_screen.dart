@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:foods_app/utils/Assets.dart';
 import 'package:foods_app/utils/UiColors.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class ShopScreen extends StatefulWidget {
+  const ShopScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ShopScreen> createState() => _ShopScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ShopScreenState extends State<ShopScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
@@ -49,9 +51,18 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedLabelStyle: const TextStyle(color: Colors.amber),
         onTap: _onItemTapped,
       ),
-      body: Container(
-        child: const Center(
-          child: Text("AAAAAAAAAAA"),
+      body: SizedBox.expand(
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SvgPicture.asset(
+                  Assets.coloredCarrot,
+                ),
+                Text("aaaaa"),
+              ],
+            ),
+          ),
         ),
       ),
     );

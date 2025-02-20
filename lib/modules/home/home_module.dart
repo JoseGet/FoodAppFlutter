@@ -10,6 +10,6 @@ class HomeModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child('/', child: (context) => const HomeScreen());
+    r.child('/', child: (context) => const ShopScreen());
   }
 }
