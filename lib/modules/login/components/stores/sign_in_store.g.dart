@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_store.dart';
+part of 'sign_in_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,8 @@ part of 'login_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$LoginStore on LoginStoreContract, Store {
-  late final _$emailAtom =
-      Atom(name: 'LoginStoreContract.email', context: context);
+mixin _$SignInStore on _SignInStore, Store {
+  late final _$emailAtom = Atom(name: '_SignInStore.email', context: context);
 
   @override
   String get email {
@@ -26,7 +25,7 @@ mixin _$LoginStore on LoginStoreContract, Store {
   }
 
   late final _$passWordAtom =
-      Atom(name: 'LoginStoreContract.passWord', context: context);
+      Atom(name: '_SignInStore.passWord', context: context);
 
   @override
   String get passWord {
@@ -42,7 +41,7 @@ mixin _$LoginStore on LoginStoreContract, Store {
   }
 
   late final _$isVisibleAtom =
-      Atom(name: 'LoginStoreContract.isVisible', context: context);
+      Atom(name: '_SignInStore.isVisible', context: context);
 
   @override
   bool get isVisible {
@@ -57,39 +56,39 @@ mixin _$LoginStore on LoginStoreContract, Store {
     });
   }
 
-  late final _$LoginStoreContractActionController =
-      ActionController(name: 'LoginStoreContract', context: context);
+  late final _$_SignInStoreActionController =
+      ActionController(name: '_SignInStore', context: context);
 
   @override
   void updateEmail(String value) {
-    final _$actionInfo = _$LoginStoreContractActionController.startAction(
-        name: 'LoginStoreContract.updateEmail');
+    final _$actionInfo = _$_SignInStoreActionController.startAction(
+        name: '_SignInStore.updateEmail');
     try {
       return super.updateEmail(value);
     } finally {
-      _$LoginStoreContractActionController.endAction(_$actionInfo);
+      _$_SignInStoreActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void updatePassword(String value) {
-    final _$actionInfo = _$LoginStoreContractActionController.startAction(
-        name: 'LoginStoreContract.updatePassword');
+    final _$actionInfo = _$_SignInStoreActionController.startAction(
+        name: '_SignInStore.updatePassword');
     try {
       return super.updatePassword(value);
     } finally {
-      _$LoginStoreContractActionController.endAction(_$actionInfo);
+      _$_SignInStoreActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void updateFielVisibility() {
-    final _$actionInfo = _$LoginStoreContractActionController.startAction(
-        name: 'LoginStoreContract.updateFielVisibility');
+    final _$actionInfo = _$_SignInStoreActionController.startAction(
+        name: '_SignInStore.updateFielVisibility');
     try {
       return super.updateFielVisibility();
     } finally {
-      _$LoginStoreContractActionController.endAction(_$actionInfo);
+      _$_SignInStoreActionController.endAction(_$actionInfo);
     }
   }
 

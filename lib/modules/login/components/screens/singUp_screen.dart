@@ -165,7 +165,9 @@ class _SingupScreenState extends State<SingupScreen> {
                         width: double.infinity,
                         child: DefaultLargeButton(
                           name: Strings.signUp,
-                          function: () {},
+                          function: () {
+                            Modular.to.navigate('/home_module');
+                          },
                         ),
                       ),
                       const SizedBox(

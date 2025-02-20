@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:foods_app/modules/login/components/stores/login_store.dart';
+import 'package:foods_app/modules/login/components/stores/sign_in_store.dart';
 import 'package:foods_app/modules/login/components/widgets/default_large_button.dart';
 import 'package:foods_app/utils/Assets.dart';
 import 'package:foods_app/utils/Strings.dart';
 import 'package:foods_app/utils/Styles.dart';
 import 'package:foods_app/utils/UiColors.dart';
 
-final loginStore = LoginStore();
+final signinStore = SignInStore();
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    Strings.loging,
+                    Strings.logIn,
                     style: Styles.titleStyle,
                   ),
                   const SizedBox(
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextField(
                         onChanged: (value) {
-                          loginStore.email = value;
+                          signinStore.email = value;
                         },
                       )
                     ],
@@ -90,18 +90,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       Observer(
                         builder: (_) => TextField(
                           onChanged: (value) {
-                            loginStore.passWord = value;
+                            signinStore.passWord = value;
                           },
-                          obscureText: loginStore.isVisible,
+                          obscureText: signinStore.isVisible,
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
-                              icon: Icon(loginStore.isVisible
+                              icon: Icon(signinStore.isVisible
                                   ? Icons.visibility_off
                                   : Icons.visibility),
                               style: const ButtonStyle(
                                   splashFactory: NoSplash.splashFactory),
                               onPressed: () {
-                                loginStore.updateFielVisibility();
+                                signinStore.updateFielVisibility();
                               },
                             ),
                           ),
@@ -132,7 +132,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: double.infinity,
                         child: DefaultLargeButton(
                           name: Strings.logIn,
-                          function: () {},
+                          function: () {
+                            Modular.to.navigate('/home_module');
+                          },
                         ),
                       ),
                       const SizedBox(
@@ -152,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: 'Singup',
+                                  text: 'Sing Up',
                                   style: const TextStyle(
                                     color: UiColors.defaultGreen,
                                     fontWeight: FontWeight.w700,

@@ -1,10 +1,10 @@
 import 'package:mobx/mobx.dart';
 
-part 'login_store.g.dart';
+part 'sign_in_store.g.dart';
 
-class LoginStore = LoginStoreContract with _$LoginStore;
+class SignInStore = _SignInStore with _$SignInStore;
 
-abstract class LoginStoreContract with Store {
+abstract class _SignInStore with Store {
   @observable
   String email = "";
   @observable
