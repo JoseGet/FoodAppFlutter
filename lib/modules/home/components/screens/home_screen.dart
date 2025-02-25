@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:foods_app/modules/home/components/widgets/home_navigation_bar.dart';
 import 'package:foods_app/utils/Assets.dart';
 import 'package:foods_app/utils/UiColors.dart';
 import 'package:mobx/mobx.dart';
@@ -12,41 +13,11 @@ class ShopScreen extends StatefulWidget {
 }
 
 class _ShopScreenState extends State<ShopScreen> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag_rounded), label: 'Shop'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.explore_rounded), label: 'Explore'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: 'Cart'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.favorite), label: 'Favourite'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle_rounded), label: 'Account'),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: UiColors.defaultGreen,
-        unselectedItemColor: UiColors.defaultTitle,
-        unselectedLabelStyle: const TextStyle(color: Colors.amber),
-        onTap: _onItemTapped,
-      ),
+      bottomNavigationBar: HomeNavigationBar(),
       body: SizedBox.expand(
         child: SafeArea(
           child: SingleChildScrollView(
